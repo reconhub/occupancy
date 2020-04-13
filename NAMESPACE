@@ -2,3 +2,4 @@
 
 export(project_beds)
 export(simulate_occupancy)
+importFrom(methods,is)

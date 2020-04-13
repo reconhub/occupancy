@@ -1,3 +1,6 @@
+#' @importFrom methods is
+NULL
+
 #' Simulator for projecting bed occupancy
 #'
 #' This function predits bed occupancy from admission data (dates, and numbers
@@ -43,16 +46,22 @@ simulate_occupancy <- function(n_admissions, dates, r_los, n_sim = 10) {
     ## sanity checks
     if (!length(dates)) stop("`dates` is empty")
 
-    if (!is.finite(n_admissions[1])) stop("`n_admissions` is not a number")
-    if (n_admissions[1] < 1) stop("`n_admissions` must be >= 1")
+    if (!all(is.finite(n_admissions))) stop("`n_admissions` is not a number")
+
+    if (!all(n_admissions > 0)) stop("`n_admissions` must be >= 1")
+
+    if (!is.finite(n_sim)) stop("`n_sim` is not a number")
+
+    if (n_sim[1] < 1) stop("`n_sim` must be >= 1")
+
+    if (!is(dates, "POSIXt") && !is(dates, "Date") && !all(is.integer(dates))) {
+        stop("`dates` must be a Date, DateTime or integer")
+    }
 
     if (inherits(r_los, "distcrete")) {
         r_los <- r_los$r
     }
     if (!is.function(r_los)) stop("`r_los` must be a function")
-
-    if (!is.finite(n_sim)) stop("`n_sim` is not a number")
-    if (n_sim[1] < 1) stop("`n_sim` must be >= 1")
 
 
     ## Outline:
