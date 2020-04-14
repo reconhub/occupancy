@@ -89,11 +89,8 @@ simulate_occupancy <- function(n_admissions, dates, r_los, n_sim = 10) {
                                                   by = 1L))
         ## Note: unlist() doesn't work with Date objects
         dates_beds <- do.call(c, list_dates_beds)
+        dates_beds <- dates_beds[dates_beds <= last_date]
         beds_days <- incidence::incidence(dates_beds)
-        if (!is.null(last_date)) {
-            to_keep <- incidence::get_dates(beds_days) <= last_date
-            beds_days <- beds_days[to_keep, ]
-        }
 
         out[[j]] <- projections::build_projections(
             x = beds_days$counts,
