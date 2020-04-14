@@ -1,8 +1,12 @@
 on:
   push:
+    paths-ignore:
+      - README*
     branches:
       - master
   pull_request:
+    paths-ignore:
+      - README*
     branches:
       - master
 
