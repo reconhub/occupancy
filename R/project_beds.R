@@ -34,6 +34,7 @@ projections::build_projections
 #'
 #' @author Thibaut Jombart
 #' @keywords internal
+#' @noRd
 simulate_occupancy <- function(n_admissions, dates, r_los, n_sim = 10) {
 
     ## Outline:
