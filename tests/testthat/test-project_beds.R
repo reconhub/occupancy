@@ -1,4 +1,5 @@
-test_that("project_beds - test 1", {
+## contant admissions and one day length of stay
+test_that("project_beds - integration test 1", {
 
     # parameters
     dates <- Sys.Date() - 1:10
@@ -24,7 +25,7 @@ test_that("project_beds - test 1", {
 })
 
 ## contant admissions and long length of stay
-test_that("project_beds - test 2", {
+test_that("project_beds - integration test 2", {
 
     # parameters
     dates <- Sys.Date() - 1:10
