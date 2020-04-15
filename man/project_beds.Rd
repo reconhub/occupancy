@@ -4,24 +4,28 @@
 \alias{project_beds}
 \title{Project bed occupancy from admissions}
 \usage{
-project_beds(x, r_los, n_sim = 1)
+project_beds(x, r_los, n_sim = 10)
 }
 \arguments{
-\item{x}{a \code{projections} object storing forecast of daily admissions}
+\item{x}{a \code{\link[projections:build_projections]{projections}} object
+storing one or more integer forecasts of daily admissions.}
 
-\item{r_los}{function generating random duration of hospitalisation}
+\item{r_los}{A \code{function} with a single parameter \code{n} returning \code{n} \code{integer}
+values of lenth of hospital stay (LoS) in days. Ideally, this should come
+from a discrete random distribution, such as \code{rexp} or any \code{distcrete}
+object.}
 
 \item{n_sim}{The number of times duration of hospitalisation is simulated for
 each admission. Defaults to 10. Only relevant for low (<30) numbers of
 initial admissions, in which case it helps accounting for the uncertainty
-in LoS.}
+in LoS.
+
+@return A \code{\link[projections:build_projections]{projections}} object
+that collects the output from the different admission trajectories.}
 }
 \description{
-This projects bed occupancy using admission incidence stored as a
-\code{projections} object, and a distribution of length of stay (los). This is a
-wrapper around \code{simulate_occupancy}, which essentially applies this function
-to different admission trajectories and collects outputs into a single
-\code{projections} object.
+This function projects bed occupancy using admission incidence and a
+distribution of length of stay (los).
 }
 \examples{
 if (require(projections))  {
@@ -45,7 +49,4 @@ if (require(projections))  {
   plot(beds)
 }
 
-}
-\seealso{
-\code{\link{simulate_occupancy}}
 }
