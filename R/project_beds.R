@@ -17,7 +17,8 @@ projections::build_projections
 #' of admissions on these days). Duration of hospitalisation is provided by a
 #' function returning `integer` values for the number of days in hospital.
 #'
-#' @param dates A vector of dates, ideally as `Date` but `integer` should work too.
+#' @param dates A vector of dates, ideally as `Date` but `integer` should work
+#' too.
 #'
 #' @param n_admissions An `integer` vector giving the number of admissions
 #'   predicted for each date in `dates`.
@@ -39,13 +40,13 @@ simulate_occupancy <- function(n_admissions, dates, r_los, n_sim = 10) {
 
     ## Outline:
 
-    ## We take a vector of dates and incidence of admissions, and turn this into a
-    ## vector of admission dates, whose length is sum(n_admissions). We will
-    ## simulate for each date of admission a duration of stay, and a corresponding
-    ## vector of dates at which this case occupies a bed. Used beds are then
-    ## counted (summing up all cases) for each day. To account for stochasticity
-    ## in duration of stay, this process can be replicated `n_sim` times,
-    ## resulting in `n_sim` predictions of bed needs over time.
+    ## We take a vector of dates and incidence of admissions, and turn this into
+    ## a vector of admission dates, whose length is sum(n_admissions). We will
+    ## simulate for each date of admission a duration of stay, and a
+    ## corresponding vector of dates at which this case occupies a bed. Used
+    ## beds are then counted (summing up all cases) for each day. To account for
+    ## stochasticity in duration of stay, this process can be replicated `n_sim`
+    ## times, resulting in `n_sim` predictions of bed needs over time.
 
 
     admission_dates <- rep(dates, n_admissions)
@@ -139,7 +140,7 @@ project_beds <- function(x, r_los, n_sim = 10) {
     ## get daily bed needs predictions for each simulated trajectory of admissions
     x_dates <- projections::get_dates(x)
     beds <- lapply(seq_len(ncol(x)),
-                   function(i) simulate_occupancy(n_admissions = x[,i],
+                   function(i) simulate_occupancy(n_admissions = x[, i],
                                                   dates = x_dates,
                                                   r_los = r_los,
                                                   n_sim = n_sim))

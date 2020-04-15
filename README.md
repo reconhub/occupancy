@@ -28,8 +28,8 @@ forward.
 
 ## Installing the package
 
-Whilst this package is not yet on cran the development, *github* version
-can be installed using:
+Whilst this package is not yet on cran, the development version can be
+installed using:
 
 ``` r
 devtools::install_github("tjtnew/bedoc")

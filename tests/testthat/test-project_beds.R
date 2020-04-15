@@ -9,7 +9,7 @@ test_that("project_beds - integration test 1", {
     }
 
     # setup
-    x = projections::build_projections(x = admissions, dates = dates)
+    x <- build_projections(x = admissions, dates = dates)
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10)
@@ -19,8 +19,8 @@ test_that("project_beds - integration test 1", {
     expect_true(all(expected == beds))
 
     # check rownames
-    beds_dates = rownames(beds)
-    expected = as.character(sort(dates))
+    beds_dates <- rownames(beds)
+    expected <- as.character(sort(dates))
     expect_equal(beds_dates, expected)
 })
 
@@ -35,7 +35,7 @@ test_that("project_beds - integration test 2", {
     }
 
     # setup
-    x = projections::build_projections(x = admissions, dates = dates)
+    x <- build_projections(x = admissions, dates = dates)
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10)
@@ -45,7 +45,7 @@ test_that("project_beds - integration test 2", {
     expect_true(all(expected == beds))
 
     # check rownames
-    beds_dates = rownames(beds)
-    expected = as.character(sort(dates))
+    beds_dates <- rownames(beds)
+    expected <- as.character(sort(dates))
     expect_equal(beds_dates, expected)
 })

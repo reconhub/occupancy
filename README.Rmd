@@ -31,7 +31,7 @@ reliable and standardised approach to forecasting that will help improve
 the quality and ease of provision of predictions going forward.
 
 ## Installing the package
-Whilst this package is not yet on cran the development, *github* version can be installed using:
+Whilst this package is not yet on cran, the development version can be installed using:
 
 ```{r install2, eval = FALSE}
 devtools::install_github("tjtnew/bedoc")
