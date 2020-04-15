@@ -29,7 +29,7 @@ function returning \code{integer} values for the number of days in hospital.
 }
 \examples{
 
-##  ## make toy duration of hospitalisation (exponential distribution)
+## make toy duration of hospitalisation (exponential distribution)
 if (require(projections)) {
 r_duration <- function(n = 1) rexp(n, .2)
 
