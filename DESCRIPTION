@@ -17,4 +17,5 @@ Imports:
 Remotes: 
     reconhub/projections
 Suggests: 
-    testthat
+    testthat,
+    covr

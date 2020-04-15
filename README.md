@@ -14,6 +14,8 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www
 status](https://github.com/tjtnew/bedoc/workflows/R-CMD-check/badge.svg)](https://github.com/tjtnew/bedoc/actions)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/bedoc)](https://CRAN.R-project.org/package=bedoc)
+[![Codecov test
+coverage](https://codecov.io/gh/tjtnew/bedoc/branch/master/graph/badge.svg)](https://codecov.io/gh/tjtnew/bedoc?branch=master)
 <!-- badges: end -->
 
 > Hospital Bed Occupancy Forecasting
