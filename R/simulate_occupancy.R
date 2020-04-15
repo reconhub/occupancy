@@ -26,7 +26,7 @@ NULL
 #'
 #' @examples
 #'
-#' ##  ## make toy duration of hospitalisation (exponential distribution)
+#' ## make toy duration of hospitalisation (exponential distribution)
 #' if (require(projections)) {
 #' r_duration <- function(n = 1) rexp(n, .2)
 #'
