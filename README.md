@@ -37,9 +37,6 @@ Note that this requires the package *devtools* to be installed.
 
 ## Functionality
 
-The user is provided with two functions:
+The user is provided with a function `project_beds` that …
 
-  - `simulate_occupancy`, and
-  - `project_beds`
-
-tbc …
+tbc
