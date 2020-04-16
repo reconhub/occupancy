@@ -4,12 +4,20 @@ NULL
 #' @importFrom projections build_projections
 NULL
 
+#' @importFrom projections merge_projections
+NULL
 
 #' @title Constructor for projections objects
 #' @keywords NULL
 #' @export
 #' @name build_projections
 projections::build_projections
+
+#' @title Merge a list of projections objects
+#' @keywords NULL
+#' @export
+#' @name merge_projections
+projections::merge_projections
 
 #' Simulator for projecting bed occupancy
 #'
@@ -117,6 +125,8 @@ simulate_occupancy <- function(n_admissions, dates, r_los, n_sim = 10) {
 #'   ## project bed occupancy
 #'   beds <- project_beds(x, r_los)
 #'   beds
+#'   beds <- merge_projections(beds)
+#'   beds
 #'   plot(beds)
 #' }
 #'
@@ -139,12 +149,9 @@ project_beds <- function(x, r_los, n_sim = 10) {
 
     ## get daily bed needs predictions for each simulated trajectory of admissions
     x_dates <- projections::get_dates(x)
-    beds <- lapply(seq_len(ncol(x)),
-                   function(i) simulate_occupancy(n_admissions = x[, i],
-                                                  dates = x_dates,
-                                                  r_los = r_los,
-                                                  n_sim = n_sim))
-
-    projections::merge_projections(beds)
-
+    lapply(seq_len(ncol(x)),
+           function(i) simulate_occupancy(n_admissions = x[, i],
+                                          dates = x_dates,
+                                          r_los = r_los,
+                                          n_sim = n_sim))
 }
