@@ -13,6 +13,7 @@ test_that("project_beds - integration test 1", {
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10)
+    beds <- merge_projections(beds)
 
     # check daily occupancies
     expected <- matrix(1, 10, 10)
@@ -39,6 +40,7 @@ test_that("project_beds - integration test 2", {
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10)
+    beds <- merge_projections(beds)
 
     # check daily occupancies
     expected <- matrix(1:10, nrow = 10, ncol = 10)

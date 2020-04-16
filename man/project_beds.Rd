@@ -46,6 +46,8 @@ if (require(projections))  {
   ## project bed occupancy
   beds <- project_beds(x, r_los)
   beds
+  beds <- merge_projections(beds)
+  beds
   plot(beds)
 }
 
