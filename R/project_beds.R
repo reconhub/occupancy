@@ -53,7 +53,7 @@ project_beds <- function(x, r_los, n_sim = 10, last_date = NULL) {
     ## sanity checks
     if (!all(is.finite(x))) stop("projection in x contains a non-numeric value")
 
-    if (!all(x >= 0)) stop("projected values in x must be >= 0")
+    if (!all(x >= 1)) stop("projected values in x must be >= 1")
 
     if (!is.finite(n_sim)) stop("`n_sim` is not a number")
 

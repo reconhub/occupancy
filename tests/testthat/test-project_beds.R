@@ -1,4 +1,4 @@
-## contant admissions and one day length of stay
+## contant admissions and one day length of stay, default last_date
 test_that("project_beds - integration test 1", {
 
     # parameters
@@ -25,7 +25,7 @@ test_that("project_beds - integration test 1", {
     expect_equal(beds_dates, expected)
 })
 
-## contant admissions and long length of stay
+## contant admissions and long length of stay, default last_date
 test_that("project_beds - integration test 2", {
 
     # parameters
