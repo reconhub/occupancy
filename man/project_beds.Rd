@@ -44,6 +44,26 @@ This function projects bed occupancy using admission incidence and a
 distribution of length of stay (los).
 }
 \examples{
+  ## fake LoS; check \code{\link[distcrete:distcrete]{distcrete::distcrete}}
+  ## for discretising existing distributions
+  r_los <- function(n) rgeom(n, prob = .3)
+
+
+  # Incidence input
+
+  ## fake data
+  dates <- Sys.Date() - 1:10
+  admissions <- sample(1:100, 10, replace = TRUE)
+  x <- incidence::incidence(rep(dates, admissions))
+  x
+  plot(x)
+
+  ## project bed occupancy
+  beds <- project_beds(x, r_los)[[1]]
+  beds
+  plot(beds)
+
+
   # Projections input
 
   ## make fake data - each column after the first is a separate forecast
@@ -55,16 +75,10 @@ distribution of length of stay (los).
   x
   plot(x)
 
-  ## fake LoS; check \code{\link[distcrete:distcrete]{distcrete::distcrete}}
-  ## for discretising existing distributions
-  r_los <- function(n) rgeom(n, prob = .3)
-
   ## project bed occupancy
   beds <- project_beds(x, r_los)
   beds <- merge_projections(beds)
   beds
   plot(beds)
-
-  # Incidence input
 
 }
