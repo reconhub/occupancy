@@ -25,8 +25,8 @@
 #'
 #' @return A list of \code{\link[projections:build_projections]{projections}}
 #'   objects produced from the admission trajectories.  Where `x` was a
-#'   \code{\link[incidence:incidence]{incidence}} object the list will be of size
-#'   one.
+#'   \code{\link[incidence:incidence]{incidence}} object the list will be of
+#'   size one.
 #'
 #' @examples
 #'   # Projections input
@@ -68,7 +68,8 @@ project_beds.default <- function(x, ...) {
 
 #' @rdname project_beds
 #' @export
-project_beds.projections <- function(x, r_los, n_sim = 10, last_date = NULL, ...) {
+project_beds.projections <- function(x, r_los, n_sim = 10, last_date = NULL,
+                                     ...) {
 
     ## sanity checks
     if (!all(is.finite(x))) stop("projection in x contains a non-numeric value")
@@ -92,8 +93,7 @@ project_beds.projections <- function(x, r_los, n_sim = 10, last_date = NULL, ...
         stop("We can't change the past!") #todo - change this!
     }
 
-    ## get daily bed needs predictions for each simulated trajectory of admissions
-
+    ## get daily predictions for each simulated trajectory of admissions
     lapply(seq_len(ncol(x)),
            function(i) simulate_occupancy(n_admissions = x[, i],
                                           dates = x_dates,
@@ -105,7 +105,8 @@ project_beds.projections <- function(x, r_los, n_sim = 10, last_date = NULL, ...
 
 #' @rdname project_beds
 #' @export
-project_beds.incidence <- function(x, r_los, n_sim = 10, last_date = NULL, ...) {
+project_beds.incidence <- function(x, r_los, n_sim = 10, last_date = NULL,
+                                   ...) {
 
     ## sanity checks
     if (as.integer(mean(incidence::get_interval(x))) != 1L) {
@@ -140,7 +141,7 @@ project_beds.incidence <- function(x, r_los, n_sim = 10, last_date = NULL, ...) 
         stop("We can't change the past!") #todo - change this!
     }
 
-    ## get daily bed needs predictions for each simulated trajectory of admissions
+    ## get daily predictions for each simulated trajectory of admissions
 
     lapply(seq_len(ncol(x)),
            function(i) simulate_occupancy(n_admissions = admissions,

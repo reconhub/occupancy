@@ -25,10 +25,11 @@
 #' @author Thibaut Jombart
 #' @keywords internal
 #' @noRd
-simulate_occupancy <- function(n_admissions, dates, r_los, n_sim = 10, last_date) {
-    
+simulate_occupancy <- function(n_admissions, dates, r_los, n_sim = 10,
+                               last_date) {
+
     ## Outline:
-    
+
     ## We take a vector of dates and incidence of admissions, and turn this into
     ## a vector of admission dates, whose length is sum(n_admissions). We will
     ## simulate for each date of admission a duration of stay, and a
@@ -36,13 +37,11 @@ simulate_occupancy <- function(n_admissions, dates, r_los, n_sim = 10, last_date
     ## beds are then counted (summing up all cases) for each day. To account for
     ## stochasticity in duration of stay, this process can be replicated `n_sim`
     ## times, resulting in `n_sim` predictions of bed needs over time.
-    
-    
+
     admission_dates <- rep(dates, n_admissions)
     n <- length(admission_dates)
     out <- vector(n_sim, mode = "list")
-    
-    
+
     for (j in seq_len(n_sim)) {
         los <- r_los(n)
         list_dates_beds <- lapply(seq_len(n),
@@ -53,12 +52,12 @@ simulate_occupancy <- function(n_admissions, dates, r_los, n_sim = 10, last_date
         dates_beds <- do.call(c, list_dates_beds)
         dates_beds <- dates_beds[dates_beds <= last_date]
         beds_days <- incidence::incidence(dates_beds)
-        
+
         out[[j]] <- projections::build_projections(
             x = beds_days$counts,
             dates = incidence::get_dates(beds_days))
     }
-    
+
     projections::merge_projections(out)
-    
+
 }

@@ -63,7 +63,7 @@ test_that("project_beds, projections class - test set 3", {
     rlos <- function(n) {
         rep(10, n)
     }
-    last_date = Sys.Date() + 100
+    last_date <- Sys.Date() + 100
 
     # setup
     x <- build_projections(x = admissions, dates = dates)
@@ -150,7 +150,7 @@ test_that("project_beds, projections class - test set 6", {
     rlos <- function(n) {
         rep(10, n)
     }
-    last_date = Sys.Date() + 100
+    last_date <- Sys.Date() + 100
 
     # setup
     x <- build_projections(x = admissions, dates = dates)

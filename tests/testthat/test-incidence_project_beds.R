@@ -63,7 +63,7 @@ test_that("project_beds, incidence class - 3", {
     rlos <- function(n) {
         rep(10, n)
     }
-    last_date = Sys.Date() + 100
+    last_date <- Sys.Date() + 100
 
     # setup
     x <- incidence::incidence(rep(dates, admissions))
