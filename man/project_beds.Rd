@@ -4,7 +4,7 @@
 \alias{project_beds}
 \title{Project bed occupancy from admissions}
 \usage{
-project_beds(x, r_los, n_sim = 10)
+project_beds(x, r_los, n_sim = 10, last_date = NULL)
 }
 \arguments{
 \item{x}{a \code{\link[projections:build_projections]{projections}} object
@@ -18,10 +18,14 @@ object.}
 \item{n_sim}{The number of times duration of hospitalisation is simulated for
 each admission. Defaults to 10. Only relevant for low (<30) numbers of
 initial admissions, in which case it helps accounting for the uncertainty
-in LoS.
+in LoS.}
 
-@return A \code{\link[projections:build_projections]{projections}} object
-that collects the output from the different admission trajectories.}
+\item{last_date}{the last date to simulate until (defaults to the maximum
+date of \code{x}).}
+}
+\value{
+A \code{\link[projections:build_projections]{projections}} object
+that collects the output from the different admission trajectories.
 }
 \description{
 This function projects bed occupancy using admission incidence and a
