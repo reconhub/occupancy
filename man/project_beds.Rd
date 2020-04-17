@@ -36,8 +36,8 @@ date of \code{x}).}
 \value{
 A list of \code{\link[projections:build_projections]{projections}}
 objects produced from the admission trajectories.  Where \code{x} was a
-\code{\link[incidence:incidence]{incidence}} object the list will be of size
-one.
+\code{\link[incidence:incidence]{incidence}} object the list will be of
+size one.
 }
 \description{
 This function projects bed occupancy using admission incidence and a
@@ -61,7 +61,6 @@ distribution of length of stay (los).
 
   ## project bed occupancy
   beds <- project_beds(x, r_los)
-  beds
   beds <- merge_projections(beds)
   beds
   plot(beds)
