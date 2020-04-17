@@ -21,7 +21,7 @@
 #' @param last_date the last date to simulate until (defaults to the maximum
 #'   date of `x`).
 #'
-#' @param ... Additional arguments passed to other methods (none are used).
+#' @param ... Additional arguments passed to other methods.
 #'
 #' @return A list of \code{\link[projections:build_projections]{projections}}
 #'   objects produced from the admission trajectories.  Where `x` was a

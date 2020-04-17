@@ -18,7 +18,7 @@ object storing one or more integer forecasts of admissions or a
 \code{\link[incidence:incidence]{incidence}} object of known daily
 admissions.}
 
-\item{...}{Additional arguments passed to other methods (none are used).}
+\item{...}{Additional arguments passed to other methods.}
 
 \item{r_los}{A \code{function} with a single parameter \code{n} returning \code{n} \code{integer}
 values of lenth of hospital stay (LoS) in days. Ideally, this should come

@@ -2,8 +2,8 @@ Package: bedoc
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: c(
-  person("Thibaut", "Jombart", role = c("aut", "cre"), email = "thibautjombart@gmail.com"), 
-  person("Taylor", "Tim", role = "ctb", email = "tjtnew@gmail.com"))
+  person("Thibaut", "Jombart", role = c("aut"), email = "thibautjombart@gmail.com"), 
+  person("Taylor", "Tim", role = c("aut", "cre"), email = "tjtnew@gmail.com"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
