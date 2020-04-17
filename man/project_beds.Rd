@@ -2,13 +2,23 @@
 % Please edit documentation in R/project_beds.R
 \name{project_beds}
 \alias{project_beds}
+\alias{project_beds.projections}
+\alias{project_beds.incidence}
 \title{Project bed occupancy from admissions}
 \usage{
-project_beds(x, r_los, n_sim = 10, last_date = NULL)
+project_beds(x, ...)
+
+\method{project_beds}{projections}(x, r_los, n_sim = 10, last_date = NULL, ...)
+
+\method{project_beds}{incidence}(x, r_los, n_sim = 10, last_date = NULL, ...)
 }
 \arguments{
-\item{x}{a \code{\link[projections:build_projections]{projections}} object
-storing one or more integer forecasts of daily admissions.}
+\item{x}{Either a \code{\link[projections:build_projections]{projections}}
+object storing one or more integer forecasts of admissions or a
+\code{\link[incidence:incidence]{incidence}} object of known daily
+admissions.}
+
+\item{...}{Additional arguments passed to other methods (none are used).}
 
 \item{r_los}{A \code{function} with a single parameter \code{n} returning \code{n} \code{integer}
 values of lenth of hospital stay (LoS) in days. Ideally, this should come
@@ -24,18 +34,19 @@ in LoS.}
 date of \code{x}).}
 }
 \value{
-A \code{\link[projections:build_projections]{projections}} object
-that collects the output from the different admission trajectories.
+A list of \code{\link[projections:build_projections]{projections}}
+objects produced from the admission trajectories.  Where \code{x} was a
+\code{\link[incidence:incidence]{incidence}} object the list will be of size
+one.
 }
 \description{
 This function projects bed occupancy using admission incidence and a
 distribution of length of stay (los).
 }
 \examples{
-if (require(projections))  {
+  # Projections input
 
-  ## make fake data
-  ## each column after the first is a separate forecast
+  ## make fake data - each column after the first is a separate forecast
   admissions <- data.frame(
       date = Sys.Date() - 1:10,
       as.data.frame(replicate(30, sample(1:100, 10, replace = TRUE))))
@@ -44,7 +55,8 @@ if (require(projections))  {
   x
   plot(x)
 
-  ## fake LoS; check `distcrete::distcrete` for discretising existing distributions
+  ## fake LoS; check \code{\link[distcrete:distcrete]{distcrete::distcrete}}
+  ## for discretising existing distributions
   r_los <- function(n) rgeom(n, prob = .3)
 
   ## project bed occupancy
@@ -53,6 +65,7 @@ if (require(projections))  {
   beds <- merge_projections(beds)
   beds
   plot(beds)
-}
+
+  # Incidence input
 
 }

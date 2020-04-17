@@ -1,5 +1,7 @@
+# Test project_beds on the incidence class
+
 ## contant admissions and one day length of stay, default last_date
-test_that("project_beds - integration test 1", {
+test_that("project_beds, incidence class - 1 ", {
 
     # parameters
     dates <- Sys.Date() - 1:10
@@ -9,11 +11,11 @@ test_that("project_beds - integration test 1", {
     }
 
     # setup
-    x <- build_projections(x = admissions, dates = dates)
+    x <- incidence::incidence(rep(dates, admissions))
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10)
-    beds <- merge_projections(beds)
+    beds <- beds[[1]]
 
     # check daily occupancies
     expected <- matrix(1, 10, 10)
@@ -26,7 +28,7 @@ test_that("project_beds - integration test 1", {
 })
 
 ## contant admissions and long length of stay, default last_date
-test_that("project_beds - integration test 2", {
+test_that("project_beds, incidence class - 2", {
 
     # parameters
     dates <- Sys.Date() - 1:10
@@ -36,11 +38,11 @@ test_that("project_beds - integration test 2", {
     }
 
     # setup
-    x <- build_projections(x = admissions, dates = dates)
+    x <- incidence::incidence(rep(dates, admissions))
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10)
-    beds <- merge_projections(beds)
+    beds <- beds[[1]]
 
     # check daily occupancies
     expected <- matrix(1:10, nrow = 10, ncol = 10)
@@ -49,5 +51,33 @@ test_that("project_beds - integration test 2", {
     # check rownames
     beds_dates <- rownames(beds)
     expected <- as.character(sort(dates))
+    expect_equal(beds_dates, expected)
+})
+
+## contant admissions and long length of stay, last_date way ahead
+test_that("project_beds, incidence class - 3", {
+
+    # parameters
+    dates <- Sys.Date() - 1:10
+    admissions <- rep(1, 10)
+    rlos <- function(n) {
+        rep(10, n)
+    }
+    last_date = Sys.Date() + 100
+
+    # setup
+    x <- incidence::incidence(rep(dates, admissions))
+
+    # simulation results
+    beds <- project_beds(x, rlos, n_sim = 10, last_date = last_date)
+    beds <- beds[[1]]
+
+    # check daily occupancies
+    expected <- matrix(c(1:10, 9:1), nrow = 19, ncol = 10)
+    expect_true(all(expected == beds))
+
+    # check rownames
+    beds_dates <- rownames(beds)
+    expected <- c(as.character(sort(dates)), as.character(Sys.Date() + 0:8))
     expect_equal(beds_dates, expected)
 })

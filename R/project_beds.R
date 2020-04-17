@@ -1,10 +1,12 @@
 #' Project bed occupancy from admissions
 #'
 #' This function projects bed occupancy using admission incidence and a
-#' distribution of length of stay (los).
+#'   distribution of length of stay (los).
 #'
-#' @param x a \code{\link[projections:build_projections]{projections}} object
-#' storing one or more integer forecasts of daily admissions.
+#' @param x Either a \code{\link[projections:build_projections]{projections}}
+#'   object storing one or more integer forecasts of admissions or a
+#'   \code{\link[incidence:incidence]{incidence}} object of known daily
+#'   admissions.
 #'
 #' @param r_los A `function` with a single parameter `n` returning `n` `integer`
 #'   values of lenth of hospital stay (LoS) in days. Ideally, this should come
@@ -17,17 +19,19 @@
 #'   in LoS.
 #'
 #' @param last_date the last date to simulate until (defaults to the maximum
-#' date of `x`).
+#'   date of `x`).
 #'
-#' @return A \code{\link[projections:build_projections]{projections}} object
-#' that collects the output from the different admission trajectories.
+#' @param ... Additional arguments passed to other methods (none are used).
 #'
+#' @return A list of \code{\link[projections:build_projections]{projections}}
+#'   objects produced from the admission trajectories.  Where `x` was a
+#'   \code{\link[incidence:incidence]{incidence}} object the list will be of size
+#'   one.
 #'
 #' @examples
-#' if (require(projections))  {
+#'   # Projections input
 #'
-#'   ## make fake data
-#'   ## each column after the first is a separate forecast
+#'   ## make fake data - each column after the first is a separate forecast
 #'   admissions <- data.frame(
 #'       date = Sys.Date() - 1:10,
 #'       as.data.frame(replicate(30, sample(1:100, 10, replace = TRUE))))
@@ -36,7 +40,8 @@
 #'   x
 #'   plot(x)
 #'
-#'   ## fake LoS; check `distcrete::distcrete` for discretising existing distributions
+#'   ## fake LoS; check \code{\link[distcrete:distcrete]{distcrete::distcrete}}
+#'   ## for discretising existing distributions
 #'   r_los <- function(n) rgeom(n, prob = .3)
 #'
 #'   ## project bed occupancy
@@ -45,10 +50,25 @@
 #'   beds <- merge_projections(beds)
 #'   beds
 #'   plot(beds)
-#' }
+#'
+#'   # Incidence input
 #'
 #' @export
-project_beds <- function(x, r_los, n_sim = 10, last_date = NULL) {
+project_beds <- function(x, ...) {
+    UseMethod("project_beds")
+}
+
+#' @export
+#' @noRd
+project_beds.default <- function(x, ...) {
+    stop(sprintf("project_beds not implemented for class %s",
+                 paste(class(x), collapse = ", ")))
+}
+
+
+#' @rdname project_beds
+#' @export
+project_beds.projections <- function(x, r_los, n_sim = 10, last_date = NULL, ...) {
 
     ## sanity checks
     if (!all(is.finite(x))) stop("projection in x contains a non-numeric value")
@@ -57,7 +77,7 @@ project_beds <- function(x, r_los, n_sim = 10, last_date = NULL) {
 
     if (!is.finite(n_sim)) stop("`n_sim` is not a number")
 
-    if (n_sim[1] < 1) stop("`n_sim` must be >= 1")
+    if (n_sim < 1) stop("`n_sim` must be >= 1")
 
     if (inherits(r_los, "distcrete")) {
         r_los <- r_los$r
@@ -76,6 +96,54 @@ project_beds <- function(x, r_los, n_sim = 10, last_date = NULL) {
 
     lapply(seq_len(ncol(x)),
            function(i) simulate_occupancy(n_admissions = x[, i],
+                                          dates = x_dates,
+                                          r_los = r_los,
+                                          n_sim = n_sim,
+                                          last_date))
+}
+
+
+#' @rdname project_beds
+#' @export
+project_beds.incidence <- function(x, r_los, n_sim = 10, last_date = NULL, ...) {
+
+    ## sanity checks
+    if (as.integer(mean(incidence::get_interval(x))) != 1L) {
+        msg <- sprintf(
+            "daily incidence needed, but interval is %d days",
+            as.integer(mean(incidence::get_interval(x)))
+        )
+        stop(msg)
+    }
+
+    admissions <- incidence::get_counts(x)
+    if (!all(is.finite(admissions))) {
+        stop("incidence counts contain a non-numeric value")
+    }
+
+    if (!all(admissions >= 1)) stop("incidence counts must be >= 1")
+
+    if (!is.finite(n_sim)) stop("`n_sim` is not a number")
+
+    if (n_sim < 1) stop("`n_sim` must be >= 1")
+
+    if (inherits(r_los, "distcrete")) {
+        r_los <- r_los$r
+    }
+    if (!is.function(r_los)) stop("`r_los` must be a function")
+
+    x_dates <- incidence::get_dates(x)
+    if (is.null(last_date)) {
+        last_date <- max(x_dates)
+    }
+    if (last_date <= min(x_dates)) {
+        stop("We can't change the past!") #todo - change this!
+    }
+
+    ## get daily bed needs predictions for each simulated trajectory of admissions
+
+    lapply(seq_len(ncol(x)),
+           function(i) simulate_occupancy(n_admissions = admissions,
                                           dates = x_dates,
                                           r_los = r_los,
                                           n_sim = n_sim,
