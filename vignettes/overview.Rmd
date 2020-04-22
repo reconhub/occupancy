@@ -95,7 +95,7 @@ plot(projection, quantiles = c(0.025, 0.5)) +
     ylim(0, 500)
 ```
 
-### Example 2
+## Example 2
 In this example we assume we have a weeks worth of admission data that, again, 
 we want to forecast the next 14 days.  This time, however, we would like to
 encorporate the disease serial-interval and a value of R0.
