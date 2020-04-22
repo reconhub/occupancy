@@ -31,18 +31,18 @@ reliable and standardised approach to forecasting that will help improve
 the quality and ease of provision of predictions going forward.
 
 ## Installing the package
-Whilst this package is not yet on cran, the development version can be installed using:
+Whilst this package is not yet on cran, the development version can be installed
+using `devtools`:
 
 ```{r install2, eval = FALSE}
 devtools::install_github("tjtnew/bedoc")
 ```
 
-Note that this requires the package *devtools* to be installed.
-
 ## Functionality
+For an introduction to the packages' functionality see view the `Introduction`
+vignette.
 
-The user is provided with a function `project_beds` that ... 
-
-tbc
-
+```{r}
+vignette("Introduction", package = "bedoc")
+```
 

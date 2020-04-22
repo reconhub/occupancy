@@ -4,7 +4,7 @@ NULL
 #' @importFrom projections build_projections
 NULL
 
-#' @importFrom projections merge_projections
+#' @importFrom incidence incidence
 NULL
 
 #' @title Constructor for projections objects
@@ -13,8 +13,8 @@ NULL
 #' @name build_projections
 projections::build_projections
 
-#' @title Merge a list of projections objects
+#' @title Compute incidence of events from a vector of dates
 #' @keywords NULL
 #' @export
-#' @name merge_projections
-projections::merge_projections
+#' @name incidence
+incidence::incidence

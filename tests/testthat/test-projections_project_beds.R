@@ -13,7 +13,6 @@ test_that("project_beds, projections class - test set 1", {
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10)
-    beds <- merge_projections(beds)
 
     # check daily occupancies
     expected <- matrix(1, 10, 10)
@@ -41,7 +40,6 @@ test_that("project_beds, projections class - test set 2", {
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10)
-    beds <- merge_projections(beds)
 
     # check daily occupancies
     expected <- matrix(1:10, nrow = 10, ncol = 10)
@@ -70,7 +68,6 @@ test_that("project_beds, projections class - test set 3", {
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10, last_date = last_date)
-    beds <- merge_projections(beds)
 
     # check daily occupancies
     expected <- matrix(c(1:10, 9:1), nrow = 19, ncol = 10)
@@ -98,7 +95,6 @@ test_that("project_beds, projections class - test set 4", {
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10)
-    beds <- merge_projections(beds)
 
     # check daily occupancies
     expected <- matrix(1, 10, 10)
@@ -127,7 +123,6 @@ test_that("project_beds, projections class - test set 5", {
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10)
-    beds <- merge_projections(beds)
 
     # check daily occupancies
     expected <- matrix(1:10, nrow = 10, ncol = 10)
@@ -157,7 +152,6 @@ test_that("project_beds, projections class - test set 6", {
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10, last_date = last_date)
-    beds <- merge_projections(beds)
 
     # check daily occupancies
     expected <- matrix(c(1:10, 9:1), nrow = 19, ncol = 10)

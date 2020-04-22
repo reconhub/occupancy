@@ -15,7 +15,6 @@ test_that("project_beds, incidence class - 1 ", {
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10)
-    beds <- beds[[1]]
 
     # check daily occupancies
     expected <- matrix(1, 10, 10)
@@ -42,7 +41,6 @@ test_that("project_beds, incidence class - 2", {
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10)
-    beds <- beds[[1]]
 
     # check daily occupancies
     expected <- matrix(1:10, nrow = 10, ncol = 10)
@@ -70,7 +68,6 @@ test_that("project_beds, incidence class - 3", {
 
     # simulation results
     beds <- project_beds(x, rlos, n_sim = 10, last_date = last_date)
-    beds <- beds[[1]]
 
     # check daily occupancies
     expected <- matrix(c(1:10, 9:1), nrow = 19, ncol = 10)

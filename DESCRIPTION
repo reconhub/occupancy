@@ -18,4 +18,10 @@ Remotes:
     reconhub/projections
 Suggests: 
     testthat,
-    covr
+    covr,
+    knitr,
+    rmarkdown,
+    distcrete,
+    ggplot2,
+    scales
+VignetteBuilder: knitr

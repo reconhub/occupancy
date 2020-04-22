@@ -23,10 +23,8 @@
 #'
 #' @param ... Additional arguments passed to other methods.
 #'
-#' @return A list of \code{\link[projections:build_projections]{projections}}
-#'   objects produced from the admission trajectories.  Where `x` was a
-#'   \code{\link[incidence:incidence]{incidence}} object the list will be of
-#'   size one.
+#' @return A \code{\link[projections:build_projections]{projections}} object
+#'   produced from the admission trajectories.
 #'
 #' @examples
 #'   ## fake LoS; check \code{\link[distcrete:distcrete]{distcrete::distcrete}}
@@ -44,7 +42,7 @@
 #'   plot(x)
 #'
 #'   ## project bed occupancy
-#'   beds <- project_beds(x, r_los)[[1]]
+#'   beds <- project_beds(x, r_los)
 #'   beds
 #'   plot(beds)
 #'
@@ -62,7 +60,6 @@
 #'
 #'   ## project bed occupancy
 #'   beds <- project_beds(x, r_los)
-#'   beds <- merge_projections(beds)
 #'   beds
 #'   plot(beds)
 #'
@@ -87,7 +84,7 @@ project_beds.projections <- function(x, r_los, n_sim = 10, last_date = NULL,
     ## sanity checks
     if (!all(is.finite(x))) stop("projection in x contains a non-numeric value")
 
-    if (!all(x >= 1)) stop("projected values in x must be >= 1")
+    if (all(x == 0)) stop("some projected values in x must be > 0")
 
     if (!is.finite(n_sim)) stop("`n_sim` is not a number")
 
@@ -107,12 +104,13 @@ project_beds.projections <- function(x, r_los, n_sim = 10, last_date = NULL,
     }
 
     ## get daily predictions for each simulated trajectory of admissions
-    lapply(seq_len(ncol(x)),
-           function(i) simulate_occupancy(n_admissions = x[, i],
-                                          dates = x_dates,
-                                          r_los = r_los,
-                                          n_sim = n_sim,
-                                          last_date))
+    beds <- lapply(seq_len(ncol(x)),
+                   function(i) simulate_occupancy(n_admissions = x[, i],
+                                                  dates = x_dates,
+                                                  r_los = r_los,
+                                                  n_sim = n_sim,
+                                                  last_date))
+    beds <- projections::merge_projections(beds)
 }
 
 
@@ -155,11 +153,12 @@ project_beds.incidence <- function(x, r_los, n_sim = 10, last_date = NULL,
     }
 
     ## get daily predictions for each simulated trajectory of admissions
+    beds <- lapply(seq_len(ncol(x)),
+                   function(i) simulate_occupancy(n_admissions = admissions,
+                                                  dates = x_dates,
+                                                  r_los = r_los,
+                                                  n_sim = n_sim,
+                                                  last_date))
 
-    lapply(seq_len(ncol(x)),
-           function(i) simulate_occupancy(n_admissions = admissions,
-                                          dates = x_dates,
-                                          r_los = r_los,
-                                          n_sim = n_sim,
-                                          last_date))
+    beds <- projections::merge_projections(beds)
 }
