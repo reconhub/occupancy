@@ -14,21 +14,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(bedoc)
-library(ggplot2)  # for plotting
-library(scales)   # for plotting
-```
-
 # Introduction
-`bedoc` implements forecasting of daily bed occupancy from input data on daily
-admissions and the distribution of duration of stay.  It aims to provide a
-reliable and standardised approach to forecasting that will help improve
-the quality and ease of provision of predictions going forward.
+`bedoc` implements forecasting of daily bed occupancy using input data on both
+daily hospital admissions and the density distribution for the duration of stay.
+It aims to provide a reliable and standardised approach to forecasting that will
+help improve the quality and ease of provision of predictions.
 
 ## Available functions
-`bedoc` contains just four functions, three of which are reexported from other
-packages for user convenience:
+`bedoc` contains three functions:
 
 * `project_beds` is the main function to compute projections of bed occupancy
 from admissions data and a length of stay distribution.
@@ -39,24 +32,31 @@ package.  It allows the user to build a
 object that can be fed to the `project_beds` function.
 * `incidence` is reexported from the 
 [`incidence`](https://cran.r-project.org/web/packages/incidence/index.html)
-package.  Similarly to `build_projections` function above, it allows the user to
-build a \code{\link[incidence::incidence]{incidence}} object that can be fed to
-`project_beds`.
+package.  Similarly to the `build_projections` function above, it allows the
+user to build a \code{\link[incidence::incidence]{incidence}} object that can be
+fed to `project_beds`.
 
 # Usage
+```{r setup}
+library(bedoc)
+library(ggplot2)    # for plotting
+library(scales)     # for plotting
+library(distcrete)  # for disretisation
+```
+
 We consider two examples where we have hospital admission data and our goal is
 to predict bed occupancy for the following weeks. With both examples we will 
-consider an outbreak in it's early stages where we are anticipating exponential
+consider an outbreak in it's early stages, where we anticipate exponential
 growth in the number of cases.
 
-Both examples we will use the
-[Weibull distribution](https://en.wikipedia.org/wiki/Weibull_distribution) for a patient's length of stay and we use the
+Both examples will use a
+[Weibull distribution](https://en.wikipedia.org/wiki/Weibull_distribution) for
+length of stay and the
 [`distcrete`](https://cran.r-project.org/web/packages/distcrete/index.html)
 package to discretise the distribution.
 
 
 ```{r}
-library(distcrete)
 length_of_stay <-
     distcrete("weibull", shape = 1.1, scale = 7.4, w = 0.5, interval = 1)
 ```
@@ -98,13 +98,16 @@ plot(projection, quantiles = c(0.025, 0.5)) +
 ## Example 2
 In this example we assume we have a weeks worth of admission data that, again, 
 we want to forecast the next 14 days.  This time, however, we would like to
-encorporate the disease serial-interval and a value of R0.
+encorporate the [serial-interval](https://en.wikipedia.org/wiki/Serial_interval)
+of the disease as well as an estimation of
+[R0](https://en.wikipedia.org/wiki/Basic_reproduction_number).
 
-To start with we make up some toy admissions data, use a value of R0 = 2.5 and
-create a discretised serial interval.  To give the example some some grounding 
-in reality we use some reasearch from the recent COVID-19 pandemic.  In a small [study](https://www.ijidonline.com/article/S1201-9712(20)30119-3/fulltext) it
+To start with we make up some toy admissions data and create a discretised
+serial interval.  To give the example some some grounding in reality we use some
+reasearch from the recent COVID-19 pandemic.  In a small [study](https://www.ijidonline.com/article/S1201-9712(20)30119-3/fulltext) it
 was observed that a log-normal distribution provided a good fit for
 data that had an observed mean of 4.7 days and standard deviation of 2.9 days.
+In what follows we use a value of R0 = 2.5.
 
 ```{r}
 library(projections)  # so we can use the `project` and subset functions 

@@ -7,7 +7,7 @@ Authors@R:
            email = "thibautjombart@gmail.com"), 
     person("Taylor", "Tim",
            role = c("aut", "cre"), email = "tjtnew@gmail.com",
-           comment = c(ORCID = "YOUR-ORCID-ID")))
+           comment = c(ORCID = "0000-0002-8587-7113")))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
