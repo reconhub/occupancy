@@ -11,11 +11,11 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![R build
-status](https://github.com/tjtnew/occupancy/workflows/R-CMD-check/badge.svg)](https://github.com/tjtnew/occupancy/actions)
+status](https://github.com/reconhub/occupancy/workflows/R-CMD-check/badge.svg)](https://github.com/reconhub/occupancy/actions)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/occupancy)](https://CRAN.R-project.org/package=occupancy)
 [![Codecov test
-coverage](https://codecov.io/gh/tjtnew/occupancy/branch/master/graph/badge.svg)](https://codecov.io/gh/tjtnew/occupancy?branch=master)
+coverage](https://codecov.io/gh/tjtnew/occupancy/branch/master/graph/badge.svg)](https://codecov.io/gh/reconhub/occupancy?branch=master)
 <!-- badges: end -->
 
 > Hospital Bed Occupancy Forecasting
@@ -32,7 +32,7 @@ Whilst this package is not yet on cran, the development version can be
 installed using `devtools`:
 
 ``` r
-devtools::install_github("tjtnew/occupancy")
+devtools::install_github("reconhub/occupancy")
 ```
 
 ## Functionality
