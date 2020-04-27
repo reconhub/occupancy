@@ -1,12 +1,8 @@
 on:
   push:
-    paths-ignore:
-      - README*
     branches:
       - master
   pull_request:
-    paths-ignore:
-      - README*
     branches:
       - master
 
@@ -22,8 +18,8 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: windows-latest, r: '3.6'}
-          - {os: macOS-latest, r: '3.6'}
+          - {os: windows-latest, r: '4.0'}
+          - {os: macOS-latest, r: '4.0'}
           - {os: macOS-latest, r: 'devel'}
           - {os: ubuntu-16.04, r: '3.6', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
 
