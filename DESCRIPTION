@@ -9,6 +9,7 @@ Authors@R:
            role = c("aut", "cre"), email = "tjtnew@gmail.com",
            comment = c(ORCID = "0000-0002-8587-7113")))
 Description: What the package does (one paragraph).
+URL: https://github.com/reconhub/occupancy
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
