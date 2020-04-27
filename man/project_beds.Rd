@@ -52,7 +52,7 @@ distribution of length of stay (los).
   ## fake data
   dates <- Sys.Date() - 1:10
   admissions <- sample(1:100, 10, replace = TRUE)
-  x <- incidence::incidence(rep(dates, admissions))
+  x <- incidence(rep(dates, admissions))
   x
   plot(x)
 
@@ -78,4 +78,7 @@ distribution of length of stay (los).
   beds
   plot(beds)
 
+}
+\author{
+Tim Taylor, Thibaut Jombart
 }

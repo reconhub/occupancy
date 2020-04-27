@@ -23,6 +23,8 @@
 #'
 #' @param ... Additional arguments passed to other methods.
 #'
+#' @author Tim Taylor, Thibaut Jombart
+#'
 #' @return A `\link[projections:build_projections]{projections}` object
 #'   produced from the admission trajectories.
 #'
@@ -37,7 +39,7 @@
 #'   ## fake data
 #'   dates <- Sys.Date() - 1:10
 #'   admissions <- sample(1:100, 10, replace = TRUE)
-#'   x <- incidence::incidence(rep(dates, admissions))
+#'   x <- incidence(rep(dates, admissions))
 #'   x
 #'   plot(x)
 #'
