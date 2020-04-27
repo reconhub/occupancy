@@ -15,7 +15,7 @@ status](https://github.com/reconhub/occupancy/workflows/R-CMD-check/badge.svg)](
 [![CRAN
 status](https://www.r-pkg.org/badges/version/occupancy)](https://CRAN.R-project.org/package=occupancy)
 [![Codecov test
-coverage](https://codecov.io/gh/tjtnew/occupancy/branch/master/graph/badge.svg)](https://codecov.io/gh/reconhub/occupancy?branch=master)
+coverage](https://codecov.io/gh/reconhub/occupancy/branch/master/graph/badge.svg)](https://codecov.io/gh/reconhub/occupancy?branch=master)
 <!-- badges: end -->
 
 > Hospital Bed Occupancy Forecasting
