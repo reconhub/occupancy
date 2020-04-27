@@ -3,9 +3,9 @@
 #' This function projects bed occupancy using admission incidence and a
 #'   distribution of length of stay (los).
 #'
-#' @param x Either a \code{\link[projections:build_projections]{projections}}
+#' @param x Either a `\link[projections:build_projections]{projections}`
 #'   object storing one or more integer forecasts of admissions or a
-#'   \code{\link[incidence:incidence]{incidence}} object of known daily
+#'   `\link[incidence:incidence]{incidence}` object of known daily
 #'   admissions.
 #'
 #' @param r_los A `function` with a single parameter `n` returning `n` `integer`
@@ -23,11 +23,11 @@
 #'
 #' @param ... Additional arguments passed to other methods.
 #'
-#' @return A \code{\link[projections:build_projections]{projections}} object
+#' @return A `\link[projections:build_projections]{projections}` object
 #'   produced from the admission trajectories.
 #'
 #' @examples
-#'   ## fake LoS; check \code{\link[distcrete:distcrete]{distcrete::distcrete}}
+#'   ## fake LoS; check `\link[distcrete:distcrete]{distcrete::distcrete}`
 #'   ## for discretising existing distributions
 #'   r_los <- function(n) rgeom(n, prob = .3)
 #'

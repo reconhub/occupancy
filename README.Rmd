@@ -31,10 +31,11 @@ reliable and standardised approach to forecasting that will help improve
 the quality and ease of provision of predictions going forward.
 
 ## Installing the package
-Whilst this package is not yet on cran, the development version can be installed using `remotes`:
+Whilst this package is not yet on cran, the development version can be installed
+using `remotes`:
 
 ```{r install, eval = FALSE}
-remotes::install_github("reconhub/occupancy", build_vignettes = TRUE)
+remotes::install_github("reconhub/occupancy", build_vignettes = TRUE, force = TRUE)
 ```
 
 ## Functionality
