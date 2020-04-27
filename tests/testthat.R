@@ -1,4 +1,4 @@
 library(testthat)
-library(bedoc)
+library(occupancy)
 
-test_check("bedoc")
+test_check("occupancy")

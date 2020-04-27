@@ -1,5 +1,5 @@
 ---
-title: "Overview of the bedoc package"
+title: "Overview of the occupancy package"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{overview}
@@ -15,13 +15,13 @@ knitr::opts_chunk$set(
 ```
 
 # Introduction
-`bedoc` implements forecasting of daily bed occupancy using input data on both
+`occupancy` implements forecasting of daily bed occupancy using input data on both
 daily hospital admissions and the density distribution for the duration of stay.
 It aims to provide a reliable and standardised approach to forecasting that will
 help improve the quality and ease of provision of predictions.
 
 ## Available functions
-`bedoc` contains three functions:
+`occupancy` contains three functions:
 
 * `project_beds` is the main function to compute projections of bed occupancy
 from admissions data and a length of stay distribution.
@@ -38,7 +38,7 @@ fed to `project_beds`.
 
 # Usage
 ```{r setup}
-library(bedoc)
+library(occupancy)
 library(ggplot2)    # for plotting
 library(scales)     # for plotting
 library(distcrete)  # for disretisation

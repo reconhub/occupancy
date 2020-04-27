@@ -13,19 +13,19 @@ knitr::opts_chunk$set(
 )
 ```
 
-# bedoc
+# occupancy
 
 <!-- badges: start -->
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![R build status](https://github.com/tjtnew/bedoc/workflows/R-CMD-check/badge.svg)](https://github.com/tjtnew/bedoc/actions)
-[![CRAN status](https://www.r-pkg.org/badges/version/bedoc)](https://CRAN.R-project.org/package=bedoc)
-[![Codecov test coverage](https://codecov.io/gh/tjtnew/bedoc/branch/master/graph/badge.svg)](https://codecov.io/gh/tjtnew/bedoc?branch=master)
+[![R build status](https://github.com/tjtnew/occupancy/workflows/R-CMD-check/badge.svg)](https://github.com/tjtnew/occupancy/actions)
+[![CRAN status](https://www.r-pkg.org/badges/version/occupancy)](https://CRAN.R-project.org/package=occupancy)
+[![Codecov test coverage](https://codecov.io/gh/tjtnew/occupancy/branch/master/graph/badge.svg)](https://codecov.io/gh/tjtnew/occupancy?branch=master)
 <!-- badges: end -->
 
 > Hospital Bed Occupancy Forecasting
 
-`bedoc` implements forecasting of daily bed occupancy from input data on daily
+`occupancy` implements forecasting of daily bed occupancy from input data on daily
 admissions and the distribution of duration of stay.  It aims to provide a
 reliable and standardised approach to forecasting that will help improve
 the quality and ease of provision of predictions going forward.
@@ -35,7 +35,7 @@ Whilst this package is not yet on cran, the development version can be installed
 using `devtools`:
 
 ```{r install, eval = FALSE}
-devtools::install_github("tjtnew/bedoc")
+devtools::install_github("tjtnew/occupancy")
 ```
 
 ## Functionality
@@ -43,6 +43,6 @@ For an introduction to the packages' functionality see view the `Introduction`
 vignette.
 
 ```{r vignette, eval = FALSE}
-vignette("Introduction", package = "bedoc")
+vignette("Introduction", package = "occupancy")
 ```
 
