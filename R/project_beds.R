@@ -88,14 +88,14 @@ project_beds.projections <- function(x, r_los, n_sim = 10, last_date = NULL,
 
     if (all(x == 0)) stop("some projected values in x must be > 0")
 
-    if (!is.finite(n_sim)) stop("`n_sim` is not a number")
+    if (!is.finite(n_sim)) stop("n_sim is not a number")
 
-    if (n_sim < 1) stop("`n_sim` must be >= 1")
+    if (n_sim < 1) stop("n_sim must be >= 1")
 
     if (inherits(r_los, "distcrete")) {
         r_los <- r_los$r
     }
-    if (!is.function(r_los)) stop("`r_los` must be a function")
+    if (!is.function(r_los)) stop("r_los must be a function")
 
     x_dates <- projections::get_dates(x)
     if (is.null(last_date)) {
@@ -135,16 +135,16 @@ project_beds.incidence <- function(x, r_los, n_sim = 10, last_date = NULL,
         stop("incidence counts contain a non-numeric value")
     }
 
-    if (!all(admissions >= 1)) stop("incidence counts must be >= 1")
+    if (all(admissions == 0)) stop("atleast some incidence counts must be > 0")
 
-    if (!is.finite(n_sim)) stop("`n_sim` is not a number")
+    if (!is.finite(n_sim)) stop("n_sim must be a number")
 
-    if (n_sim < 1) stop("`n_sim` must be >= 1")
+    if (n_sim < 1) stop("n_sim must be >= 1")
 
     if (inherits(r_los, "distcrete")) {
         r_los <- r_los$r
     }
-    if (!is.function(r_los)) stop("`r_los` must be a function")
+    if (!is.function(r_los)) stop("r_los must be a function")
 
     x_dates <- incidence::get_dates(x)
     if (is.null(last_date)) {

@@ -1,7 +1,7 @@
 # Test project_beds on the incidence class
 
 ## contant admissions and one day length of stay, default last_date
-test_that("project_beds, incidence class - 1 ", {
+test_that("project_beds, incidence class - test 1 ", {
 
     # parameters
     dates <- Sys.Date() - 1:10
@@ -27,7 +27,7 @@ test_that("project_beds, incidence class - 1 ", {
 })
 
 ## contant admissions and long length of stay, default last_date
-test_that("project_beds, incidence class - 2", {
+test_that("project_beds, incidence class - test 2", {
 
     # parameters
     dates <- Sys.Date() - 1:10
@@ -53,7 +53,7 @@ test_that("project_beds, incidence class - 2", {
 })
 
 ## contant admissions and long length of stay, last_date way ahead
-test_that("project_beds, incidence class - 3", {
+test_that("project_beds, incidence class - test 3", {
 
     # parameters
     dates <- Sys.Date() - 1:10
@@ -80,7 +80,7 @@ test_that("project_beds, incidence class - 3", {
 })
 
 ## check output class is correct
-test_that("project_beds, incidence class - 4 ", {
+test_that("project_beds, incidence class - test 4 ", {
 
     # parameters
     dates <- Sys.Date() - 1:10
