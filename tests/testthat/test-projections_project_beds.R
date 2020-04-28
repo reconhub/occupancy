@@ -1,4 +1,4 @@
-# Test project_beds on the projections class
+# Integration tests for project_beds on the projections class
 
 ## single contant admissions and one day length of stay, default last_date,
 test_that("project_beds, projections class - test 1", {

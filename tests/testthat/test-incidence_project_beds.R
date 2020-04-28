@@ -1,4 +1,4 @@
-# Test project_beds on the incidence class
+# Integration test for project_beds on the incidence class
 
 ## contant admissions and one day length of stay, default last_date
 test_that("project_beds, incidence class - test 1 ", {
