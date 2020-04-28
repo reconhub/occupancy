@@ -1,5 +1,7 @@
+# Test project_beds on the projections class
+
 ## single contant admissions and one day length of stay, default last_date,
-test_that("project_beds, projections class - test set 1", {
+test_that("project_beds, projections class - test 1", {
 
     # parameters
     dates <- Sys.Date() - 1:10
@@ -26,7 +28,7 @@ test_that("project_beds, projections class - test set 1", {
 
 
 ## single contant admissions and long length of stay, default last_date
-test_that("project_beds, projections class - test set 2", {
+test_that("project_beds, projections class - test 2", {
 
     # parameters
     dates <- Sys.Date() - 1:10
@@ -53,7 +55,7 @@ test_that("project_beds, projections class - test set 2", {
 
 
 ## single contant admissions and long length of stay, last_date way ahead
-test_that("project_beds, projections class - test set 3", {
+test_that("project_beds, projections class - test 3", {
 
     # parameters
     dates <- Sys.Date() - 1:10
@@ -81,7 +83,7 @@ test_that("project_beds, projections class - test set 3", {
 
 
 ## multiple contant admissions and one day length of stay, default last_date,
-test_that("project_beds, projections class - test set 4", {
+test_that("project_beds, projections class - test 4", {
 
     # parameters
     dates <- Sys.Date() - 1:10
@@ -109,7 +111,7 @@ test_that("project_beds, projections class - test set 4", {
 
 
 ## multiple contant admissions and long length of stay, default last_date
-test_that("project_beds, projections class - test set 5", {
+test_that("project_beds, projections class - test 5", {
 
     # parameters
     dates <- Sys.Date() - 1:10
@@ -137,7 +139,7 @@ test_that("project_beds, projections class - test set 5", {
 
 
 ## multiple contant admissions and long length of stay, last_date way ahead
-test_that("project_beds, projections class - test set 6", {
+test_that("project_beds, projections class - test 6", {
 
     # parameters
     dates <- Sys.Date() - 1:10
@@ -162,4 +164,25 @@ test_that("project_beds, projections class - test set 6", {
     beds_dates <- rownames(beds)
     expected <- c(as.character(sort(dates)), as.character(Sys.Date() + 0:8))
     expect_equal(beds_dates, expected)
+})
+
+
+## check output class is correct
+test_that("project_beds, projections class - test 7", {
+
+    # parameters
+    dates <- Sys.Date() - 1:10
+    admissions <- rep(1, 10)
+    rlos <- function(n) {
+        rep(1, n)
+    }
+
+    # setup
+    x <- build_projections(x = admissions, dates = dates)
+
+    # simulation results
+    beds <- project_beds(x, rlos, n_sim = 10)
+
+    # check class
+    expect_true(inherits(beds, "projections"))
 })
