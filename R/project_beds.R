@@ -112,7 +112,7 @@ project_beds.projections <- function(x, r_los, n_sim = 10, last_date = NULL,
                                                   r_los = r_los,
                                                   n_sim = n_sim,
                                                   last_date))
-    beds <- projections::merge_projections(beds)
+    projections::merge_projections(beds)
 }
 
 
@@ -162,5 +162,5 @@ project_beds.incidence <- function(x, r_los, n_sim = 10, last_date = NULL,
                                                   n_sim = n_sim,
                                                   last_date))
 
-    beds <- projections::merge_projections(beds)
+    projections::merge_projections(beds)
 }
