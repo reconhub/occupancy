@@ -141,7 +141,7 @@
                            <span class="kw">r_los</span> <span class="kw">=</span> <span class="no">length_of_stay</span>,
                            <span class="kw">n_sims</span> <span class="kw">=</span> <span class="fl">10</span>)
 
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">projection</span>, <span class="kw">quantiles</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>)) +
+<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">projection</span>, <span class="kw">quantiles</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>)) +
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html">scale_x_date</a></span>(<span class="kw">breaks</span> <span class="kw">=</span> <span class="fu"><a href="https://scales.r-lib.org//reference/breaks_pretty.html">breaks_pretty</a></span>(<span class="fl">10</span>)) +
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span>(<span class="fl">0</span>, <span class="fl">500</span>)</pre></body></html></div>
 <p><img src="overview_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
@@ -165,7 +165,7 @@
 
 <span class="co"># generate the discretised serial inteval</span>
 <span class="no">serial_interval</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/distcrete/man/distcrete.html">distcrete</a></span>(<span class="st">"lnorm"</span>, <span class="no">mu</span>, <span class="no">sd</span>, <span class="kw">w</span> <span class="kw">=</span> <span class="fl">0.5</span>, <span class="kw">interval</span> <span class="kw">=</span> <span class="fl">1</span>)
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="fl">1</span>:<span class="fl">20</span>, <span class="no">serial_interval</span>$<span class="fu">d</span>(<span class="fl">1</span>:<span class="fl">20</span>), <span class="kw">type</span> <span class="kw">=</span> <span class="st">"h"</span>, <span class="kw">lwd</span> <span class="kw">=</span> <span class="fl">5</span>, <span class="kw">col</span> <span class="kw">=</span> <span class="st">"navy"</span>,
+<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="fl">1</span>:<span class="fl">20</span>, <span class="no">serial_interval</span>$<span class="fu">d</span>(<span class="fl">1</span>:<span class="fl">20</span>), <span class="kw">type</span> <span class="kw">=</span> <span class="st">"h"</span>, <span class="kw">lwd</span> <span class="kw">=</span> <span class="fl">5</span>, <span class="kw">col</span> <span class="kw">=</span> <span class="st">"navy"</span>,
      <span class="kw">main</span> <span class="kw">=</span> <span class="st">"Serial interval"</span>, <span class="kw">xlab</span> <span class="kw">=</span> <span class="st">"Days after onset"</span>,
      <span class="kw">ylab</span> <span class="kw">=</span> <span class="st">"Relative infectiousness"</span>)</pre></body></html></div>
 <p><img src="overview_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
@@ -186,9 +186,10 @@
 
 <span class="no">projections</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span>(<span class="no">projections</span>, <span class="kw">from</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span>())
 
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">projections</span>, <span class="kw">quantiles</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>)) +
+<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">projections</span>, <span class="kw">quantiles</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>)) +
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html">scale_x_date</a></span>(<span class="kw">breaks</span> <span class="kw">=</span> <span class="fu"><a href="https://scales.r-lib.org//reference/breaks_pretty.html">breaks_pretty</a></span>(<span class="fl">10</span>)) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span>(<span class="fl">0</span>, <span class="fl">500</span>)</pre></body></html></div>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span>(<span class="fl">0</span>, <span class="fl">500</span>)
+<span class="co">#&gt; Warning: Removed 1 row(s) containing missing values (geom_path).</span></pre></body></html></div>
 <p><img src="overview_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 </div>
 </div>
