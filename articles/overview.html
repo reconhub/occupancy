@@ -39,30 +39,24 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/overview.html">Overview of the occupancy package</a>
-    </li>
-  </ul>
+  <a href="../articles/overview.html">Getting started</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/reconhub/occupancy/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/reconhub/occupancy">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -80,6 +74,7 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Overview of the occupancy package</h1>
+                        <h4 class="author">Tim Taylor</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/reconhub/occupancy/blob/master/vignettes/overview.Rmd"><code>vignettes/overview.Rmd</code></a></small>
@@ -141,12 +136,12 @@
                            <span class="kw">r_los</span> <span class="kw">=</span> <span class="no">length_of_stay</span>,
                            <span class="kw">n_sims</span> <span class="kw">=</span> <span class="fl">10</span>)
 
-<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">projection</span>, <span class="kw">quantiles</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>)) +
+<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">projection</span>, <span class="kw">quantiles</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>), <span class="kw">ylab</span> <span class="kw">=</span> <span class="st">"Predicted occupancy"</span>) +
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html">scale_x_date</a></span>(<span class="kw">breaks</span> <span class="kw">=</span> <span class="fu"><a href="https://scales.r-lib.org//reference/breaks_pretty.html">breaks_pretty</a></span>(<span class="fl">10</span>)) +
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span>(<span class="fl">0</span>, <span class="fl">500</span>)
 <span class="co">#&gt; Scale for 'x' is already present. Adding another scale for 'x', which will</span>
 <span class="co">#&gt; replace the existing scale.</span></pre></body></html></div>
-<p><img src="overview_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<p><img src="overview_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;"></p>
 </div>
 <div id="example-2" class="section level2">
 <h2 class="hasAnchor">
@@ -170,7 +165,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="fl">1</span>:<span class="fl">20</span>, <span class="no">serial_interval</span>$<span class="fu">d</span>(<span class="fl">1</span>:<span class="fl">20</span>), <span class="kw">type</span> <span class="kw">=</span> <span class="st">"h"</span>, <span class="kw">lwd</span> <span class="kw">=</span> <span class="fl">5</span>, <span class="kw">col</span> <span class="kw">=</span> <span class="st">"navy"</span>,
      <span class="kw">main</span> <span class="kw">=</span> <span class="st">"Serial interval"</span>, <span class="kw">xlab</span> <span class="kw">=</span> <span class="st">"Days after onset"</span>,
      <span class="kw">ylab</span> <span class="kw">=</span> <span class="st">"Relative infectiousness"</span>)</pre></body></html></div>
-<p><img src="overview_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
+<p><img src="overview_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb6"><html><body><pre class="r">
 <span class="co"># project future admissions</span>
 <span class="no">future_admissions</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/projections/man/project.html">project</a></span>(<span class="no">initial_admissions</span>,
@@ -188,12 +183,12 @@
 
 <span class="no">projections</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span>(<span class="no">projections</span>, <span class="kw">from</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span>())
 
-<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">projections</span>, <span class="kw">quantiles</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>)) +
+<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">projections</span>, <span class="kw">quantiles</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>), <span class="kw">ylab</span> <span class="kw">=</span> <span class="st">"Predicted occupancy"</span>) +
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html">scale_x_date</a></span>(<span class="kw">breaks</span> <span class="kw">=</span> <span class="fu"><a href="https://scales.r-lib.org//reference/breaks_pretty.html">breaks_pretty</a></span>(<span class="fl">10</span>)) +
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span>(<span class="fl">0</span>, <span class="fl">500</span>)
 <span class="co">#&gt; Scale for 'x' is already present. Adding another scale for 'x', which will</span>
 <span class="co">#&gt; replace the existing scale.</span></pre></body></html></div>
-<p><img src="overview_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<p><img src="overview_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;"></p>
 </div>
 </div>
   </div>
