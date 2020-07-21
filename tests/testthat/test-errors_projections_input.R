@@ -86,3 +86,34 @@ test_that("errors, projections class - test 5", {
                  "We can't change the past")
 })
 
+
+
+test_that("errors, projections class - test 6", {
+
+    # applied to non-projecting class
+    x <- logical()
+    expect_error(
+        project_beds(x),
+        "project_beds not implemented for class logical",
+        fixed = TRUE
+    )
+})
+
+
+test_that("errors, projections class - test 7", {
+
+    # sims less than one errors
+    dates <- Sys.Date() - 1:10
+    admissions <- rep(1, 10)
+    rlos <- function(n) {
+        rep(1, n)
+    }
+    x <- build_projections(x = admissions, dates = dates)
+    expect_error(
+        project_beds(x, rlos, n_sim = 0),
+        "n_sim must be >= 1",
+        fixed = TRUE)
+})
+
+
+

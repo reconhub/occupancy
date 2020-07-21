@@ -85,3 +85,6 @@ test_that("errors, incidence class - test 5", {
                               last_date = Sys.Date() - 100),
                  "We can't change the past!")
 })
+
+
+
