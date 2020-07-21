@@ -21,8 +21,7 @@
 #'   in LoS.
 #'
 #' @param last_date the last date to simulate until.
-#'
-#' @author Thibaut Jombart
+#' @author Tim Taylor, Thibaut Jombart
 #' @keywords internal
 #' @noRd
 simulate_occupancy <- function(n_admissions, dates, r_los, n_sim = 10,

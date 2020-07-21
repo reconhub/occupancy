@@ -3,9 +3,9 @@
 #' This function projects bed occupancy using admission incidence and a
 #'   distribution of length of stay (los).
 #'
-#' @param x Either a \code{\link[projections:build_projections]{projections}}
+#' @param x Either a `\link[projections:build_projections]{projections}`
 #'   object storing one or more integer forecasts of admissions or a
-#'   \code{\link[incidence:incidence]{incidence}} object of known daily
+#'   `\link[incidence:incidence]{incidence}` object of known daily
 #'   admissions.
 #'
 #' @param r_los A `function` with a single parameter `n` returning `n` `integer`
@@ -23,11 +23,13 @@
 #'
 #' @param ... Additional arguments passed to other methods.
 #'
-#' @return A \code{\link[projections:build_projections]{projections}} object
+#' @author Tim Taylor, Thibaut Jombart
+#'
+#' @return A `\link[projections:build_projections]{projections}` object
 #'   produced from the admission trajectories.
 #'
 #' @examples
-#'   ## fake LoS; check \code{\link[distcrete:distcrete]{distcrete::distcrete}}
+#'   ## fake LoS; check `\link[distcrete:distcrete]{distcrete::distcrete}`
 #'   ## for discretising existing distributions
 #'   r_los <- function(n) rgeom(n, prob = .3)
 #'
@@ -37,7 +39,7 @@
 #'   ## fake data
 #'   dates <- Sys.Date() - 1:10
 #'   admissions <- sample(1:100, 10, replace = TRUE)
-#'   x <- incidence::incidence(rep(dates, admissions))
+#'   x <- incidence(rep(dates, admissions))
 #'   x
 #'   plot(x)
 #'
@@ -86,14 +88,14 @@ project_beds.projections <- function(x, r_los, n_sim = 10, last_date = NULL,
 
     if (all(x == 0)) stop("some projected values in x must be > 0")
 
-    if (!is.finite(n_sim)) stop("`n_sim` is not a number")
+    if (!is.finite(n_sim)) stop("n_sim is not a number")
 
-    if (n_sim < 1) stop("`n_sim` must be >= 1")
+    if (n_sim < 1) stop("n_sim must be >= 1")
 
     if (inherits(r_los, "distcrete")) {
         r_los <- r_los$r
     }
-    if (!is.function(r_los)) stop("`r_los` must be a function")
+    if (!is.function(r_los)) stop("r_los must be a function")
 
     x_dates <- projections::get_dates(x)
     if (is.null(last_date)) {
@@ -110,7 +112,7 @@ project_beds.projections <- function(x, r_los, n_sim = 10, last_date = NULL,
                                                   r_los = r_los,
                                                   n_sim = n_sim,
                                                   last_date))
-    beds <- projections::merge_projections(beds)
+    projections::merge_projections(beds)
 }
 
 
@@ -133,16 +135,16 @@ project_beds.incidence <- function(x, r_los, n_sim = 10, last_date = NULL,
         stop("incidence counts contain a non-numeric value")
     }
 
-    if (!all(admissions >= 1)) stop("incidence counts must be >= 1")
+    if (all(admissions == 0)) stop("atleast some incidence counts must be > 0")
 
-    if (!is.finite(n_sim)) stop("`n_sim` is not a number")
+    if (!is.finite(n_sim)) stop("n_sim must be a number")
 
-    if (n_sim < 1) stop("`n_sim` must be >= 1")
+    if (n_sim < 1) stop("n_sim must be >= 1")
 
     if (inherits(r_los, "distcrete")) {
         r_los <- r_los$r
     }
-    if (!is.function(r_los)) stop("`r_los` must be a function")
+    if (!is.function(r_los)) stop("r_los must be a function")
 
     x_dates <- incidence::get_dates(x)
     if (is.null(last_date)) {
@@ -160,5 +162,5 @@ project_beds.incidence <- function(x, r_los, n_sim = 10, last_date = NULL,
                                                   n_sim = n_sim,
                                                   last_date))
 
-    beds <- projections::merge_projections(beds)
+    projections::merge_projections(beds)
 }

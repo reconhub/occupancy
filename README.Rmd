@@ -32,17 +32,17 @@ the quality and ease of provision of predictions going forward.
 
 ## Installing the package
 Whilst this package is not yet on cran, the development version can be installed
-using `devtools`:
+using `remotes`:
 
 ```{r install, eval = FALSE}
-devtools::install_github("reconhub/occupancy")
+remotes::install_github("reconhub/occupancy", build_vignettes = TRUE, force = TRUE)
 ```
 
 ## Functionality
-For an introduction to the packages' functionality see view the `Introduction`
+For an introduction to the packages' functionality see view the `Overview`
 vignette.
 
 ```{r vignette, eval = FALSE}
-vignette("Introduction", package = "occupancy")
+vignette("overview", package = "occupancy")
 ```
 

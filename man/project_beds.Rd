@@ -13,9 +13,9 @@ project_beds(x, ...)
 \method{project_beds}{incidence}(x, r_los, n_sim = 10, last_date = NULL, ...)
 }
 \arguments{
-\item{x}{Either a \code{\link[projections:build_projections]{projections}}
+\item{x}{Either a \verb{\link[projections:build_projections]\{projections\}}
 object storing one or more integer forecasts of admissions or a
-\code{\link[incidence:incidence]{incidence}} object of known daily
+\verb{\link[incidence:incidence]\{incidence\}} object of known daily
 admissions.}
 
 \item{...}{Additional arguments passed to other methods.}
@@ -34,7 +34,7 @@ in LoS.}
 date of \code{x}).}
 }
 \value{
-A \code{\link[projections:build_projections]{projections}} object
+A \verb{\link[projections:build_projections]\{projections\}} object
 produced from the admission trajectories.
 }
 \description{
@@ -42,7 +42,7 @@ This function projects bed occupancy using admission incidence and a
 distribution of length of stay (los).
 }
 \examples{
-  ## fake LoS; check \code{\link[distcrete:distcrete]{distcrete::distcrete}}
+  ## fake LoS; check `\link[distcrete:distcrete]{distcrete::distcrete}`
   ## for discretising existing distributions
   r_los <- function(n) rgeom(n, prob = .3)
 
@@ -52,7 +52,7 @@ distribution of length of stay (los).
   ## fake data
   dates <- Sys.Date() - 1:10
   admissions <- sample(1:100, 10, replace = TRUE)
-  x <- incidence::incidence(rep(dates, admissions))
+  x <- incidence(rep(dates, admissions))
   x
   plot(x)
 
@@ -78,4 +78,7 @@ distribution of length of stay (los).
   beds
   plot(beds)
 
+}
+\author{
+Tim Taylor, Thibaut Jombart
 }

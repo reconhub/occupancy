@@ -29,17 +29,17 @@ forward.
 ## Installing the package
 
 Whilst this package is not yet on cran, the development version can be
-installed using `devtools`:
+installed using `remotes`:
 
 ``` r
-devtools::install_github("reconhub/occupancy")
+remotes::install_github("reconhub/occupancy", build_vignettes = TRUE, force = TRUE)
 ```
 
 ## Functionality
 
 For an introduction to the packages’ functionality see view the
-`Introduction` vignette.
+`Overview` vignette.
 
 ``` r
-vignette("Introduction", package = "occupancy")
+vignette("overview", package = "occupancy")
 ```
