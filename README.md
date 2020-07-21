@@ -32,7 +32,7 @@ Whilst this package is not yet on cran, the development version can be
 installed using `remotes`:
 
 ``` r
-remotes::install_github("reconhub/occupancy", build_vignettes = TRUE, force = TRUE)
+remotes::install_github("reconhub/occupancy", build_vignettes = TRUE)
 ```
 
 ## Functionality
