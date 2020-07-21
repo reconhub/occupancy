@@ -37,9 +37,5 @@ remotes::install_github("reconhub/occupancy", build_vignettes = TRUE)
 
 ## Functionality
 
-For an introduction to the packages’ functionality see view the
-`Overview` vignette.
-
-``` r
-vignette("overview", package = "occupancy")
-```
+For an introduction to the packages’ functionality see
+`vignette("overview", package = "occupancy")`
