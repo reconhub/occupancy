@@ -144,9 +144,9 @@ distribution of length of stay (los).</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Either a <code><a href='https://rdrr.io/pkg/projections/man/build_projections.html'>projections</a></code>
+      <td><p>Either a <code>\link[projections:build_projections]{projections}</code>
 object storing one or more integer forecasts of admissions or a
-<code><a href='https://rdrr.io/pkg/incidence/man/incidence.html'>incidence</a></code> object of known daily
+<code>\link[incidence:incidence]{incidence}</code> object of known daily
 admissions.</p></td>
     </tr>
     <tr>
@@ -176,11 +176,11 @@ date of <code>x</code>).</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://rdrr.io/pkg/projections/man/build_projections.html'>projections</a></code> object
+    <p>A <code>\link[projections:build_projections]{projections}</code> object
 produced from the admission trajectories.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='co'>## fake LoS; check \code{\link[distcrete:distcrete]{distcrete::distcrete}}</span>
+    <pre class="examples"><div class='input'>  <span class='co'>## fake LoS; check `\link[distcrete:distcrete]{distcrete::distcrete}`</span>
   <span class='co'>## for discretising existing distributions</span>
   <span class='no'>r_los</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>n</span>) <span class='fu'><a href='https://rdrr.io/r/stats/Geometric.html'>rgeom</a></span>(<span class='no'>n</span>, <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fl'>.3</span>)
 
@@ -190,9 +190,9 @@ produced from the admission trajectories.</p>
   <span class='co'>## fake data</span>
   <span class='no'>dates</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>() - <span class='fl'>1</span>:<span class='fl'>10</span>
   <span class='no'>admissions</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span>:<span class='fl'>100</span>, <span class='fl'>10</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-  <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>incidence</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/incidence/man/incidence.html'>incidence</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>dates</span>, <span class='no'>admissions</span>))
+  <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='incidence.html'>incidence</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>dates</span>, <span class='no'>admissions</span>))
   <span class='no'>x</span></div><div class='output co'>#&gt; &lt;incidence object&gt;
-#&gt; [500 cases from days 2020-04-26 to 2020-05-05]
+#&gt; [500 cases from days 2020-07-11 to 2020-07-20]
 #&gt; 
 #&gt; $counts: matrix with 10 rows and 1 columns
 #&gt; $n: 500 cases in total
@@ -211,17 +211,17 @@ produced from the admission trajectories.</p>
 #&gt; 
 #&gt;  // first rows/columns:
 #&gt;            sim_1 sim_2 sim_3 sim_4 sim_5 sim_6
-#&gt; 2020-04-26     4     3     2     4     5     4
-#&gt; 2020-04-27    49    55    48    55    49    51
-#&gt; 2020-04-28    85    94    84    95    84    89
-#&gt; 2020-04-29    94   119   103   107   111   115
+#&gt; 2020-07-11     4     3     2     4     5     4
+#&gt; 2020-07-12    49    55    48    55    49    51
+#&gt; 2020-07-13    85    94    84    95    84    89
+#&gt; 2020-07-14    94   119   103   107   111   115
 #&gt;  .
 #&gt;  .
 #&gt;  .
 #&gt; 
 #&gt;  // dates:
-#&gt;  [1] "2020-04-26" "2020-04-27" "2020-04-28" "2020-04-29" "2020-04-30"
-#&gt;  [6] "2020-05-01" "2020-05-02" "2020-05-03" "2020-05-04" "2020-05-05"
+#&gt;  [1] "2020-07-11" "2020-07-12" "2020-07-13" "2020-07-14" "2020-07-15"
+#&gt;  [6] "2020-07-16" "2020-07-17" "2020-07-18" "2020-07-19" "2020-07-20"
 #&gt; </div><div class='input'>  <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>beds</span>)</div><div class='img'><img src='project_beds-2.png' alt='' width='700' height='433' /></div><div class='input'>
 
   <span class='co'># Projections input</span>
@@ -240,17 +240,17 @@ produced from the admission trajectories.</p>
 #&gt; 
 #&gt;  // first rows/columns:
 #&gt;            V1 V2 V3 V4  V5 V6
-#&gt; 2020-04-26  8 17 36 95 100 89
-#&gt; 2020-04-27 36 52 99  2  80 57
-#&gt; 2020-04-28 45 16 87 37  11 73
-#&gt; 2020-04-29 56 43  1 22  35 65
+#&gt; 2020-07-11  8 17 36 95 100 89
+#&gt; 2020-07-12 36 52 99  2  80 57
+#&gt; 2020-07-13 45 16 87 37  11 73
+#&gt; 2020-07-14 56 43  1 22  35 65
 #&gt;  .
 #&gt;  .
 #&gt;  .
 #&gt; 
 #&gt;  // dates:
-#&gt;  [1] "2020-04-26" "2020-04-27" "2020-04-28" "2020-04-29" "2020-04-30"
-#&gt;  [6] "2020-05-01" "2020-05-02" "2020-05-03" "2020-05-04" "2020-05-05"
+#&gt;  [1] "2020-07-11" "2020-07-12" "2020-07-13" "2020-07-14" "2020-07-15"
+#&gt;  [6] "2020-07-16" "2020-07-17" "2020-07-18" "2020-07-19" "2020-07-20"
 #&gt; </div><div class='input'>  <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>x</span>)</div><div class='img'><img src='project_beds-3.png' alt='' width='700' height='433' /></div><div class='input'>
   <span class='co'>## project bed occupancy</span>
   <span class='no'>beds</span> <span class='kw'>&lt;-</span> <span class='fu'>project_beds</span>(<span class='no'>x</span>, <span class='no'>r_los</span>)
@@ -262,17 +262,17 @@ produced from the admission trajectories.</p>
 #&gt; 
 #&gt;  // first rows/columns:
 #&gt;            sim_1 sim_2 sim_3 sim_4 sim_5 sim_6
-#&gt; 2020-04-26     7     6     4     5     7     6
-#&gt; 2020-04-27    33    27    30    30    32    25
-#&gt; 2020-04-28    55    58    52    54    57    49
-#&gt; 2020-04-29    81    78    84    87    73    76
+#&gt; 2020-07-11     7     6     4     5     7     6
+#&gt; 2020-07-12    33    27    30    30    32    25
+#&gt; 2020-07-13    55    58    52    54    57    49
+#&gt; 2020-07-14    81    78    84    87    73    76
 #&gt;  .
 #&gt;  .
 #&gt;  .
 #&gt; 
 #&gt;  // dates:
-#&gt;  [1] "2020-04-26" "2020-04-27" "2020-04-28" "2020-04-29" "2020-04-30"
-#&gt;  [6] "2020-05-01" "2020-05-02" "2020-05-03" "2020-05-04" "2020-05-05"
+#&gt;  [1] "2020-07-11" "2020-07-12" "2020-07-13" "2020-07-14" "2020-07-15"
+#&gt;  [6] "2020-07-16" "2020-07-17" "2020-07-18" "2020-07-19" "2020-07-20"
 #&gt; </div><div class='input'>  <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>beds</span>)</div><div class='img'><img src='project_beds-4.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
@@ -290,7 +290,7 @@ produced from the admission trajectories.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
