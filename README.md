@@ -18,6 +18,13 @@ status](https://www.r-pkg.org/badges/version/occupancy)](https://CRAN.R-project.
 coverage](https://codecov.io/gh/reconhub/occupancy/branch/master/graph/badge.svg)](https://codecov.io/gh/reconhub/occupancy?branch=master)
 <!-- badges: end -->
 
+**<span style="color: red;">Disclaimer</span>**
+
+This package is a work in progress. Please reach out to the authors
+before using.
+
+<br>
+
 > Hospital Bed Occupancy Forecasting
 
 `occupancy` implements forecasting of daily bed occupancy from input
