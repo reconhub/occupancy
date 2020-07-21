@@ -119,7 +119,7 @@
 <p>In this example we assume the disease has a doubling time of 7 days and that there are initially 10 hospital admissions.</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">initial_admissions</span> <span class="kw">&lt;-</span> <span class="fl">10</span> <span class="co"># day one</span>
 <span class="no">duration</span> <span class="kw">&lt;-</span> <span class="fl">14</span>           <span class="co"># 14 days (2 weeks) duration</span>
-<span class="no">growth_rate</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(<span class="fl">2</span>) / <span class="fl">7</span> <span class="co"># doubling time of 7 days</span>
+<span class="no">growth_rate</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(<span class="fl">2</span>) / <span class="fl">7</span> <span class="co"># doubling time of 7 days</span>
 
 <span class="no">future_admissions</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(
     <span class="no">initial_admissions</span> * <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(<span class="no">growth_rate</span> * (<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="no">duration</span>))))
@@ -158,7 +158,7 @@
 <span class="no">recorded_mean</span> <span class="kw">&lt;-</span> <span class="fl">4.7</span>
 <span class="no">recorded_sd</span> <span class="kw">&lt;-</span> <span class="fl">2.9</span>
 <span class="no">mu</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(<span class="no">recorded_mean</span>^<span class="fl">2</span> / <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span>(<span class="no">recorded_mean</span>^<span class="fl">2</span> + <span class="no">recorded_sd</span>^<span class="fl">2</span>))
-<span class="no">sd</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(<span class="fl">1</span> + <span class="no">recorded_sd</span>^<span class="fl">2</span> / <span class="no">recorded_mean</span>^<span class="fl">2</span>))
+<span class="no">sd</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(<span class="fl">1</span> + <span class="no">recorded_sd</span>^<span class="fl">2</span> / <span class="no">recorded_mean</span>^<span class="fl">2</span>))
 
 <span class="co"># generate the discretised serial inteval</span>
 <span class="no">serial_interval</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/distcrete/man/distcrete.html">distcrete</a></span>(<span class="st">"lnorm"</span>, <span class="no">mu</span>, <span class="no">sd</span>, <span class="kw">w</span> <span class="kw">=</span> <span class="fl">0.5</span>, <span class="kw">interval</span> <span class="kw">=</span> <span class="fl">1</span>)
@@ -187,7 +187,8 @@
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html">scale_x_date</a></span>(<span class="kw">breaks</span> <span class="kw">=</span> <span class="fu"><a href="https://scales.r-lib.org//reference/breaks_pretty.html">breaks_pretty</a></span>(<span class="fl">10</span>)) +
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span>(<span class="fl">0</span>, <span class="fl">500</span>)
 <span class="co">#&gt; Scale for 'x' is already present. Adding another scale for 'x', which will</span>
-<span class="co">#&gt; replace the existing scale.</span></pre></body></html></div>
+<span class="co">#&gt; replace the existing scale.</span>
+<span class="co">#&gt; Warning: Removed 1 row(s) containing missing values (geom_path).</span></pre></body></html></div>
 <p><img src="overview_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;"></p>
 </div>
 </div>
