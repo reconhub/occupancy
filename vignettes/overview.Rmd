@@ -73,7 +73,7 @@ that there are initially 10 hospital admissions.
 ```{r}
 initial_admissions <- 10 # day one
 duration <- 14           # 14 days (2 weeks) duration
-growth_rate = log(2) / 7 # doubling time of 7 days
+growth_rate <- log(2) / 7 # doubling time of 7 days
 
 future_admissions <- round(
     initial_admissions * exp(growth_rate * (seq_len(duration))))
@@ -124,7 +124,7 @@ initial_admissions <- incidence(initial_admissions)
 recorded_mean <- 4.7
 recorded_sd <- 2.9
 mu <- log(recorded_mean^2 / sqrt(recorded_mean^2 + recorded_sd^2))
-sd = sqrt(log(1 + recorded_sd^2 / recorded_mean^2))
+sd <- sqrt(log(1 + recorded_sd^2 / recorded_mean^2))
 
 # generate the discretised serial inteval
 serial_interval <- distcrete("lnorm", mu, sd, w = 0.5, interval = 1)

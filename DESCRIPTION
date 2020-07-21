@@ -17,8 +17,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
     projections (>= 0.4.1),
-    incidence,
-    methods
+    incidence
 Remotes: 
     reconhub/projections
 Suggests: 
@@ -28,5 +27,6 @@ Suggests:
     rmarkdown,
     distcrete,
     ggplot2,
-    scales
+    scales,
+    vdiffr
 VignetteBuilder: knitr
