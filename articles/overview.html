@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">occupancy</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -96,9 +96,9 @@
 <li>
 <code>project_beds</code> is the main function to compute projections of bed occupancy from admissions data and a length of stay distribution.</li>
 <li>
-<code>build_projections</code> is reexported from the <a href="https://cran.r-project.org/web/packages/projections/index.html"><code>projections</code></a> package. It allows the user to build a  object that can be fed to the <code>project_beds</code> function.</li>
+<code>build_projections</code> is reexported from the <a href="https://CRAN.R-project.org/package=projections"><code>projections</code></a> package. It allows the user to build a  object that can be fed to the <code>project_beds</code> function.</li>
 <li>
-<code>incidence</code> is reexported from the <a href="https://cran.r-project.org/web/packages/incidence/index.html"><code>incidence</code></a> package. Similarly to the <code>build_projections</code> function above, it allows the user to build a  object that can be fed to <code>project_beds</code>.</li>
+<code>incidence</code> is reexported from the <a href="https://CRAN.R-project.org/package=incidence"><code>incidence</code></a> package. Similarly to the <code>build_projections</code> function above, it allows the user to build a  object that can be fed to <code>project_beds</code>.</li>
 </ul>
 </div>
 </div>
@@ -110,7 +110,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">scales</span>)     <span class="co"># for plotting</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">distcrete</span>)  <span class="co"># for disretisation</span></pre></body></html></div>
 <p>We consider two examples where we have hospital admission data and our goal is to predict bed occupancy for the following weeks. With both examples we will consider an outbreak in it’s early stages, where we anticipate exponential growth in the number of cases.</p>
-<p>Both examples will use a <a href="https://en.wikipedia.org/wiki/Weibull_distribution">Weibull distribution</a> for length of stay and the <a href="https://cran.r-project.org/web/packages/distcrete/index.html"><code>distcrete</code></a> package to discretise the distribution.</p>
+<p>Both examples will use a <a href="https://en.wikipedia.org/wiki/Weibull_distribution">Weibull distribution</a> for length of stay and the <a href="https://CRAN.R-project.org/package=distcrete"><code>distcrete</code></a> package to discretise the distribution.</p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">length_of_stay</span> <span class="kw">&lt;-</span>
     <span class="fu"><a href="https://rdrr.io/pkg/distcrete/man/distcrete.html">distcrete</a></span>(<span class="st">"weibull"</span>, <span class="kw">shape</span> <span class="kw">=</span> <span class="fl">1.1</span>, <span class="kw">scale</span> <span class="kw">=</span> <span class="fl">7.4</span>, <span class="kw">w</span> <span class="kw">=</span> <span class="fl">0.5</span>, <span class="kw">interval</span> <span class="kw">=</span> <span class="fl">1</span>)</pre></body></html></div>
 <div id="example-1" class="section level2">
