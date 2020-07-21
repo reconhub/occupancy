@@ -1,5 +1,5 @@
 Package: occupancy
-Title: What the Package Does (One Line, Title Case)
+Title: Forecast Hospital Bed Occupancy
 Version: 0.0.0.9000
 Authors@R: 
   c(person("Thibaut", "Jombart",
@@ -8,18 +8,20 @@ Authors@R:
     person("Taylor", "Tim",
            role = c("aut", "cre"), email = "tjtnew@gmail.com",
            comment = c(ORCID = "0000-0002-8587-7113")))
-Description: What the package does (one paragraph).
+Description: Forecasting of daily bed occupancy using input data on both
+  daily hospital admissions and the density distribution for the duration of
+  stay. Provides a reliable and standardised approach to forecasting that will
+  help improve the quality and ease of provision of predictions.
 URL: https://github.com/reconhub/occupancy
+BugReports: https://github.com/reconhub/occupancy/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
-    projections (>= 0.4.1),
+    projections (>= 0.5.0),
     incidence
-Remotes: 
-    reconhub/projections
 Suggests: 
     testthat,
     covr,
