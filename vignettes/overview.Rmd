@@ -30,12 +30,12 @@ help improve the quality and ease of provision of predictions.
 * `project_beds` is the main function to compute projections of bed occupancy
 from admissions data and a length of stay distribution.
 * `build_projections` is reexported from the 
-[`projections`](https://cran.r-project.org/web/packages/projections/index.html)
+[`projections`](https://CRAN.R-project.org/package=projections)
 package.  It allows the user to build a
 \code{\link[projections:build_projections]{projections}}
 object that can be fed to the `project_beds` function.
 * `incidence` is reexported from the 
-[`incidence`](https://cran.r-project.org/web/packages/incidence/index.html)
+[`incidence`](https://CRAN.R-project.org/package=incidence)
 package.  Similarly to the `build_projections` function above, it allows the
 user to build a \code{\link[incidence::incidence]{incidence}} object that can be
 fed to `project_beds`.
@@ -56,7 +56,7 @@ growth in the number of cases.
 Both examples will use a
 [Weibull distribution](https://en.wikipedia.org/wiki/Weibull_distribution) for
 length of stay and the
-[`distcrete`](https://cran.r-project.org/web/packages/distcrete/index.html)
+[`distcrete`](https://CRAN.R-project.org/package=distcrete)
 package to discretise the distribution.
 
 

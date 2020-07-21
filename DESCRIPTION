@@ -1,12 +1,12 @@
 Package: occupancy
 Title: Forecast Hospital Bed Occupancy
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
   c(person("Thibaut", "Jombart",
            role = c("aut"), 
            email = "thibautjombart@gmail.com"), 
     person("Taylor", "Tim",
-           role = c("aut", "cre"), email = "tjtnew@gmail.com",
+           role = c("aut", "cre"), email = "tim.taylor@hiddenelephants.co.uk",
            comment = c(ORCID = "0000-0002-8587-7113")))
 Description: Forecasting of daily bed occupancy using input data on both
   daily hospital admissions and the density distribution for the duration of
