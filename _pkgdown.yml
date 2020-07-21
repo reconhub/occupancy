@@ -1,0 +1,25 @@
+navbar:
+
+  left:
+  - icon: fa-home fa-lg
+    href: index.html
+  - text: Reference
+    href: reference/index.html
+  - text: Getting started
+    href: articles/overview.html
+  - text: Changelog
+    href: news/index.html
+
+  right:
+  - icon: fa-github fa-lg
+    href: https://github.com/reconhub/incidence2
+
+
+reference:
+- title: Occupancy functions
+  desc: >
+    Functions for computing occupancy
+  contents:
+  - '`project_beds`'
+  - '`incidence`'
+  - '`build_projections`'

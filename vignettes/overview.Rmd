@@ -1,5 +1,6 @@
 ---
 title: "Overview of the occupancy package"
+author: "Tim Taylor"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{overview}
@@ -10,7 +11,10 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.align = "center",
+  fig.width = 7,
+  fig.height = 5
 )
 ```
 
@@ -90,7 +94,7 @@ projection <- project_beds(x = admissions,
                            r_los = length_of_stay, 
                            n_sims = 10)
 
-plot(projection, quantiles = c(0.025, 0.5)) + 
+plot(projection, quantiles = c(0.025, 0.5), ylab = "Predicted occupancy") + 
     scale_x_date(breaks = breaks_pretty(10)) + 
     ylim(0, 500)
 ```
@@ -147,7 +151,7 @@ projections <- project_beds(x = admissions,
 
 projections <- subset(projections, from = Sys.Date())
 
-plot(projections, quantiles = c(0.025, 0.5)) + 
+plot(projections, quantiles = c(0.025, 0.5), ylab = "Predicted occupancy") + 
     scale_x_date(breaks = breaks_pretty(10)) + 
     ylim(0, 500)
 ```

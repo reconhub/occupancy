@@ -71,7 +71,6 @@ project_beds <- function(x, ...) {
 }
 
 #' @export
-#' @noRd
 project_beds.default <- function(x, ...) {
     stop(sprintf("project_beds not implemented for class %s",
                  paste(class(x), collapse = ", ")))
